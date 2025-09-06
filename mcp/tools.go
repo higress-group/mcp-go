@@ -33,7 +33,10 @@ type ListToolsResult struct {
 // should be reported as an MCP error response.
 type CallToolResult struct {
 	Result
-	Content []Content `json:"content"` // Can be TextContent, ImageContent, or      EmbeddedResource
+	Content []Content `json:"content"` // Can be TextContent, ImageContent, or EmbeddedResource
+	// Structured content provides a structured representation of the tool result.
+	// This allows for more precise data exchange between the tool and the LLM.
+	StructuredContent interface{} `json:"structuredContent,omitempty"`
 	// Whether the tool call ended in an error.
 	//
 	// If not set, this is assumed to be false (the call was successful).
